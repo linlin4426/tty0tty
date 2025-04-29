@@ -26,7 +26,7 @@ the connection is:
 
 ### module
 
-The module is tested in kernels from 3.10.2 to 5.3.15 (debian) 
+The module is tested in kernels from 3.10.2 to 6.1.0 (debian) 
 
 When loaded, create 8 ttys interconnected:
 
@@ -57,22 +57,19 @@ In ysplitter mode a third virtual port is connected and has access to the data s
 
 ## Precompiled .deb packages
 
-You can get precompiled tty0tty dkms module or ssniffer packages from the [piduino.org](http://apt.piduino.org) repository for Debian or Ubuntu :
+You can get precompiled tty0tty dkms module or ssniffer packages from the [piduino.org](http://apt.piduino.org) repository for Debian :
 
-    wget -O- http://www.piduino.org/piduino-key.asc | sudo apt-key add -
-    sudo add-apt-repository 'deb http://apt.piduino.org buster piduino'
+    wget -O- http://www.piduino.org/piduino-key.asc | sudo gpg --dearmor --yes --output /usr/share/keyrings/piduino-archive-keyring.gpg
+    echo "deb [signed-by=/usr/share/keyrings/piduino-archive-keyring.gpg] http://apt.piduino.org $(lsb_release -c -s) piduino" | sudo tee /etc/apt/sources.list.d/piduino.list
     sudo apt update
 
-The repository added in the `add-apt-repository` command is for the 
-Debian Buster distribution, but you can also choose **bullseye**, 
-**bionic**, **focal** or **jammy**.  
+This repostitory provides packages for the following distributions:  
+* **bookworm** (Debian 12)  
+* **bullseye** (Debian 11)  
+* **buster** (Debian 10 which is EOL, it will be removed next year)
+
 These repositories provide packages for the **amd64**, **armhf** and 
 **arm64** architectures.
-
-If the `add-apt-repository` command fails, install the `software-properties-common` package like this:
-
-    sudo apt install software-properties-common
-
 ### module
 
     sudo apt install tty0tty-dkms

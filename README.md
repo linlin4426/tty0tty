@@ -26,7 +26,7 @@ the connection is:
 
 ### module
 
-The module is tested in kernels from 3.10.2 to 6.1.0 (debian) 
+The module is tested in kernels from 3.10.2 to 6.12.34 (debian) 
 
 When loaded, create 8 ttys interconnected:
 
@@ -92,7 +92,7 @@ for module build is necessary kernel-headers or kernel source:
 
 for debian package:
 
-    sudo apt-get install devscripts build-essential lintian debhelper
+    sudo apt-get install devscripts build-essential lintian debhelper dkms dh-dkms
 
 Download the archive file from https://github.com/lcgamboa/tty0tty/archive/refs/heads/master.zip
 
